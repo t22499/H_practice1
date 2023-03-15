@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>p09</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <style>
+        div{
+            width: 130px;
+            height: 50px;
+            padding: 15px;
+            margin: 15px;
+            background-color: green;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $(".hidebtn").click(function(){
+                $("div").toggle(1000);
+
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <div>隐藏及设置回调函数</div>
+    <button class="hidebtn">隐藏/显示</button>
+    
+</body>
+</html>

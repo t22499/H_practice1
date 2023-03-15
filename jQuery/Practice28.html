@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#b1").click(function() {
+                alert("背景颜色 =" + $("#d1").css("background-color"));
+            });
+            $("#b2").click(function() {
+                $("d2").css("background-color","red");
+            });     
+        });
+    </script>
+</head>
+<body>
+    <div id="d1" style="background-color: #973737;">a</div>
+    <div id="d2" style="background-color: #3a1a1a;">b</div>
+    <button id="b1">点我1</button>
+    <button id="b2">点我2</button>
+
+    
+</body>
+</html>

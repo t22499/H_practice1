@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p15</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script >
+        $(document).ready(function() {
+            $("#flip").click(function() {
+                $("#panel").slideToggle(3000);
+            });
+            $("#stop").click(function() {
+                $("#panel").stop();
+            });
+        });
+    </script>
+    <style type="text/css">
+        #flip,#panel{
+            background-color: aqua;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #c3c3c3;
+        }
+        #panel{
+            /* display: none; */
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <button id="stop">停止滑动</button>
+    <div id="flip">点我向下滑动面板</div>
+    <div id="panel">Hello world!</div>
+    
+</body>
+</html>
