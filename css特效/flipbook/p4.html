@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jquery.min.1.7.js"></script>
+		<script src="js/modernizr.2.5.3.min.js"></script>
+		<script src="js/turn.min.js"></script>
+		<style>
+			*{margin: 0;padding: 0;}
+			body{
+				overflow: hidden;
+			}
+			.container{
+				width: 800px;
+				height: 600px;
+				border: 1px solid red;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin: auto;
+				transform: translate(-50%,-50%);
+			}
+			.flipbook .page{
+				background:lightgreen;
+			}
+			.flipbook .shadow{
+				box-shadow: 0 0 20px grey;
+			}
+			.flipbook .page:first-child{
+				display: flex;
+			}
+			.my-first-page{
+				margin: auto;
+				width: 243px;
+				height: 243px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+			}
+			.my-first-page img{
+				width:243px;
+				height:243px;
+			}
+			.my-content{
+				position: relative;
+				padding: 50px 30px;
+				height: 500px;
+			}
+			.my-content h3{
+				text-align: center;
+				line-height: 2;
+			}
+			/* .my-content p:nth-child(2){
+				text-indent: 50px;
+			} */
+			.my-content p{
+				text-indent: 50px;
+			}
+			.my-content p:nth-of-type(1)::first-letter{
+				font-size: 50px;
+			}
+			.my-content h6{
+				position: absolute;
+				bottom: 10px;
+				left: 50%;
+			}
+
+			
+
+		</style>
+	</head>
+	<body>
+        <div class="my-btns">
+            
+            <a href="javascript:pageto(1)">1</a>
+            <a href="javascript:pageto(2)">2</a>
+            <a href="javascript:pageto(3)">3</a>
+            <a href="javascript:pageto(4)">4</a>
+            <!-- <button onclick="$('.flipbook').turn('previous')">上一页</button>
+            <button onclick="$('.flipbook').turn('next')">下一页</button> -->
+			<button class="prev-button">上一页</button>
+			<button class="next-button">下一页</button>
+        </div>
+		<div class="container">
+			<div class="flipbook">
+				<!--首页-->
+				<div class="hard">
+					<div class="my-first-page">
+						<img src="img/1.webp" alt/>
+						<h1>上帝掷骰子吗</h1>
+					</div>
+				</div>
+				<!--第一页-->
+				<div class="hard">
+				</div>
+				<!--第二页-->
+				<div class="hard">
+					<div class="my-content">
+						<h3>第一章</h3>
+						<p>作为一个欧美RPG的资深玩家，
+							他对于20世纪90年代中期以后出品的RPG有较为深刻的理解。
+							他深入欣赏了近十年来RPG游戏中的绝大部分精品，从而对这批游戏从结构到画面，
+							从音乐到制作风格都有深入了解。他对国内通晓此类游戏的玩家进行了长达3年的跟踪采访，
+							掌握了玩家在进行RPG游戏心理方面的第一手资料。他从2003年初开始担任中文网络最大的欧美RPG游戏社群NTRPG首席新闻官。
+							2003至2004年间他负责《电脑报》欧美游戏版面编辑。
+							<h6>第一页</h6>
+						</p>
+					</div>
+				</div>
+				<!--第三页-->
+				<div class="hard">封页</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+        function pageto(num){
+            $(".flipbook").turn("page",num);
+        }    
+		$(function(){
+            function loadBook(){
+                var flipbook  = $(".flipbook").turn({
+                    width: 800,
+                    height: 600,
+                    page:1,
+                    autoCenter: true, /*居中*/
+                    pages:4
+
+				});
+            }
+			yepnope({
+				test:	Modernizr.csstransforms,
+				yep:["js/turn.min.js"],
+				nope:["turn.html4.min.js"],
+				complete:loadBook
+			});
+		})
+            
+		</script>
+	</body>
+</html>

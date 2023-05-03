@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #appback{
+            width: 100px;
+            height: 100px;
+            background: url("img/微信图片_20221207190516.jpg") no-repeat;
+            background-position: center , center;
+            background-size: 100% 100%;
+            position: absolute;
+            left: 80px;
+            top: 70px;
+            opacity: 0.2;
+            z-index: -10;
+        }
+
+    </style>
+    <script src="js/jquery.min.1.7.js"></script>
+    <script src="js/radialIndicator.min.js"></script>
+    <script>
+        var app2=null;
+        var app3=null;
+        var app4=null;
+        var timer2 = null;
+        var timer3 = null;
+        var timer4 = null;
+        $(function(){
+            radialIndicator("#app",{
+                initValue:60,
+                radius:100,
+                barWidth:20,
+                barColor: "#ff0000",
+                roundCorner:true,
+                minValue:0,
+                maxValue:60,
+                /*displayNumber:true*/
+                percentage:true
+            })
+
+            app2 = radialIndicator("#app2",{
+                initValue:0,
+                radius:100,
+                barWidth:20,
+                barColor: {
+                    0:"#f00",
+                    50:"#ff0",
+                    100:"#0f0"
+                },
+                roundCorner:true,
+                minValue:0,
+                maxValue:60,
+                /*displayNumber:true*/
+                /*percentage:true*/
+            })
+
+            app3 = radialIndicator("#app3",{
+                initValue:0,
+                radius:100,
+                barWidth:20,
+                barColor: {
+                    0:"#f00",
+                    50:"#ff0",
+                    100:"#0f0"
+                },
+                roundCorner:true,
+                minValue:0,
+                maxValue:60,
+                /*displayNumber:true*/
+                /*percentage:true*/
+            })
+
+            app4 = radialIndicator("#app4",{
+                initValue:0,
+                radius:100,
+                barWidth:20,
+                barColor: {
+                    0:"#f00",
+                    50:"#ff0",
+                    100:"#0f0"
+                },
+                roundCorner:true,
+                minValue:0,
+                maxValue:60,
+                /*displayNumber:true*/
+                /*percentage:true*/
+            })
+            timer2 = setInterval("changeApp2()",100);
+            timer3 = setInterval("changeApp3()",100);
+            timer4 = setInterval("changeApp4()",100);
+        })
+        var app2Value = 0;
+        function changeApp2(){
+            app2Value++;
+            app2.value(app2Value);
+            if(app2Value >= 60){
+                clearInterval(timer2);
+            }
+        }
+        var app3Value = 0;
+        function changeApp3(){
+            app3Value++;
+            app3.animate(app3Value);
+            if(app3Value >= 60){
+                clearInterval(timer3);
+            }
+        }
+
+        var app4Value = 0;
+        function changeApp4(){
+            app4Value++;
+            app4.animate(app4Value);
+            if(app4Value >= 60){
+                clearInterval(timer4);
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="app"></div>
+    <div id="appback"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <div id="app4"></div>
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{margin: 0px;padding: 0px;}
+			body{
+				background-color: aquamarine;
+				width: 100%;
+				height: 100vh;
+				display: flex;
+			}
+			#char1{
+				/* width: 100px;
+				height: 100px; */
+				background-color: red;
+				margin: auto;
+				border-radius: 85px;
+				padding: 0 50px 0 50px;
+				/* padding-left: 50px;
+				padding-right: 50px; */
+			}
+			.my-span{
+				display: inline-block;
+				color: white;
+				font-size: 130px;
+			}
+			.my-hide{
+				opacity: 0;
+				width: 0;
+			}
+			#char1:hover>span.my-hide{
+				width: auto;
+				opacity: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="char1">
+			<span class="my-span">J</span>
+			<span class="my-span my-hide">a</span>
+			<span class="my-span my-hide">v</span>
+			<span class="my-span my-hide">a</span>
+			<span class="my-span">E</span>
+			<span class="my-span my-hide">E</span>
+		</div>
+	</body>
+</html>

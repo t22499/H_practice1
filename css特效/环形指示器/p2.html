@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{margin: 0px; padding: 0px;}
+        body{
+            display: flex;
+
+        }
+        #app{
+            margin: auto;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script src="js/jquery.min.1.7.js"></script>
+    <script src="js/radialIndicator.min.js"></script>
+    <script type="text/javascript">
+        var app = null;
+     $(function(){
+            app = radialIndicator("#app",{
+                initValue:0,
+                radius:150,
+                barWidth:40,
+                barColor: {
+                    0:"#f00",
+                    50:"#ff0",
+                    100:"#0f0"
+                },
+                roundCorner:false,
+                minValue:0,
+                maxValue:60,
+                format:function(){
+                    var now = new Date();
+                    var str = "";
+                    if(now.getHours() >= 10){
+                        str += now.getHours();        
+                    }else{
+                        str += ("0" + now.getHours());
+                    }
+                    str += ":";
+                    if(now.getMinutes() >= 10){
+                        str += now.getMinutes();        
+                    }else{
+                        str += ("0" + now.getMinutes());
+                    }
+                    str += ":"
+                    if( now.getSeconds() >= 10){
+                        str += now.getSeconds();        
+                    }else{
+                        str += ("0" +  now.getSeconds());
+                    }
+                    
+                    return str;
+                }
+            })
+            setInterval("Time()",1000);
+        });
+        function Time(){
+            var now = new Date();
+            app.value(now.getSeconds());
+        } 
+    </script>
+</html>

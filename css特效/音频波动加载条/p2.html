@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p1</title>
+</head>
+<body>
+    <audio id="myAudio" src="path/to/audio/file.mp3"></audio>
+    <canvas id="canvas" width="600" height="100"></canvas>
+</body>
+<script>
+    // 获取音频元素和Canvas元素
+    const audio = document.getElementById('myAudio');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    // 定义一些变量
+    let width = canvas.width;
+    let height = canvas.height;
+    let barWidth = 3;
+    let barGap = 1;
+    let barCount = width / (barWidth + barGap);
+    let dataArray = new Uint8Array(barCount);
+
+    // 创建一个渲染函数
+    function renderFrame() {
+    // 从音频元素中获取音频数据
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = '#f7f7f7';
+    context.fillRect(0, 0, width, height);
+    context.fillStyle = '#000';
+
+    // 分析音频数据
+    audioCtx = new AudioContext();
+    source = audioCtx.createMediaElementSource(audio);
+    analyser = audioCtx.createAnalyser();
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    analyser.fftSize = 2048;
+    let bufferLength = analyser.frequencyBinCount;
+    let dataArray = new Uint8Array(bufferLength);
+    analyser.getByteFrequencyData(dataArray);
+
+    // 将音频数据渲染到画布上
+    let barHeight;
+    for (let i = 0; i < barCount; i++) {
+        barHeight = dataArray[i] / 2;
+        context.fillRect(i * (barWidth + barGap), height - barHeight, barWidth, barHeight);
+    }
+
+    // 循环调用渲染函数
+    requestAnimationFrame(renderFrame);
+    }
+
+    // 开始渲染
+    renderFrame();
+</script>
+</html>
