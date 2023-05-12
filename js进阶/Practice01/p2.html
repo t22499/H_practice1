@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="inner"></div>
+<div class="create"></div>
+    
+</body>
+<script>
+    var inner = document.querySelector(".inner");
+    /*使用数组拼接，提高了效率*/
+    var arr = [];
+    for (var i = 0; i <= 100; i++) {
+        arr.push("<a href='#'>百度</a>");
+    }
+    inner.innerHTML=arr.join("");
+</script>
+</html>

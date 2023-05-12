@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.min.js"></script>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        你好
+    </div>
+</body>
+<script>
+    $(function(){
+        $("div").mousemove(function(){
+            $(this).css({
+                width: 300,
+                height: 300,
+                backgroundColor:"red"
+            })
+        })
+        $("div").mouseout(function(){
+            $(this).css({
+                width: 100,
+                height: 100,
+                backgroundColor:"pink"
+                
+            })
+        })
+    });
+    
+</script>
+</html>
