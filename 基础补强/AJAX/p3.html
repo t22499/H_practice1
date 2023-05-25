@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        #result{
+            width: 200px;
+            height: 100px;
+            border: solid 1px #90b;
+        }
+    </style>
+</head>
+<body>
+    <button>点击发送请求</button>
+    <div id="result"></div>
+    <script>
+        //获取button元素
+        const btn = document.getElementsByTagName('button')[0];
+        const result = document.getElementById("result");
+        //绑定事件
+        btn.onclick = function(){
+            //创建对象
+            const xhr = new XMLHttpRequest();
+            //设置响应体数据的类型
+            xhr.responseType = 'json';
+            //初始化 设置请求方法和 url
+            // xhr.open('GET','http://127.0.0.1:8000/json-server');
+
+            //解决了AJAX ie缓存
+            xhr.open('GET','http://127.0.0.1:8000/json-server?t='+Date.now());
+
+            //发送
+            xhr.send('a=100&b=100');
+            //事件绑定 处理服务器端返回的结果
+            xhr.onreadystatechange = function(){
+                //判断(服务端返回所有的结果)
+                if(xhr.readyState == 4){
+                     //判断响应状态码
+                    if(xhr.status >= 200 && xhr.status < 300){
+                        //手动转换
+                        // let data = JSON.parse(xhr.response);
+                        // console.log(data);
+                        //自动转换
+                        result.innerHTML = xhr.response.name;
+                    }else{
+
+                    }
+                }
+            }
+
+        }
+        
+    </script>
+</body>
+</html>
