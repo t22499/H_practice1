@@ -1,0 +1,46 @@
+body html {
+  margin: 0;
+  padding: 0;
+}
+.b1 {
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #003;
+}
+#a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#a .a1 {
+  background-color: #ff0000;
+  width: 100px;
+  height: 100px;
+}
+#a .a2 {
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #003;
+}
+#a .a3 {
+  width: 200px;
+  height: 200px;
+  background-color: #ffff00;
+}
+#a .a4 {
+  width: 100px;
+  height: 100px;
+  background-image: -webkit-gradient(linear, left top, right top, from(#ff0000));
+  background-image: linear-gradient(to right, #ff0000);
+}
+#a .a5 {
+  width: 100px;
+  background-color: blue;
+  height: 100px;
+}

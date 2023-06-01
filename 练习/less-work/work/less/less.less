@@ -1,0 +1,60 @@
+@background-color-a1:red;
+@width-a1:100px;
+@height-a1:100px;
+body html{
+    margin: 0;
+    padding: 0;
+}
+//混合
+.b1{
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    box-sizing: border-box;
+    border: 1px solid #003;
+}
+.b2(@color:yellow){
+    background-color: @color;
+}
+//混合带多个参数
+.b3(@direction, @colors) {
+    background-image: linear-gradient(@direction, @colors);
+}
+//匹配模式
+.b4(blue,@widht:100px){
+    width: @widht;
+    background-color: blue;
+    height: 100px;
+
+}
+.b4(green,@widht:100px){
+    width: @widht;
+    background-color: green;
+    height: 150px;
+
+}
+
+#a{
+    display: flex;
+    .a1{
+        background-color: @background-color-a1;
+        width: @width-a1;
+        height: @height-a1;
+    }
+    .a2{
+        .b1;
+    }
+    .a3{
+        width: 200px;
+        height: 200px;
+        .b2();
+    }
+    .a4{
+        width: 100px;
+        height: 100px;
+        .b3(to right, red)
+    }
+    .a5{
+        .b4(blue);
+    }
+}

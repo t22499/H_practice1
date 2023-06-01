@@ -1,0 +1,54 @@
+@import"background";
+@mixin aaa($direction,$gradients...){
+    background: linear-gradient($direction,$gradients);
+    
+}
+html body{
+    padding: 0;
+    margin: 0;
+}
+#a{
+    display: flex;
+    position: relative;
+    .a1{
+        float: left;
+        width: 100px;
+        height: 100px;
+        font-size: 12px;
+        // display: inline-block;
+        @include aaa(to right,#f00,orange,yellow);
+    }
+    $width:200;
+    .a2{
+        // display: inline-block;
+        background-color: $background-color;
+        width: #{$width}px;
+        height: 80px;
+        float: left;
+    }
+}
+
+// @for $i from 1 to 3{
+//     .a#{$i} {
+//         width: 200px;
+//         height: 200px;
+//         background-color: red;
+
+
+//     }
+// }
+// $a:yellow green ;
+// @each $ab in $a{
+//     $index : index($a,$ab);
+//     .a#{$index - 1} {
+//         background-color: $ab;
+//     }
+
+// }
+// $column:2;
+// @while $column > 0{
+//     .a#{$column} {
+//         background-color: red;
+//     }
+//     $column:$column - 1;
+// }
