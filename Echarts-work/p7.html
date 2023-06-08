@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/echarts.min.js"></script>
+    <style>
+        #main{
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+</body>
+<script>
+    var myChart = echarts.init(document.getElementById("main"));
+    myChart.showLoading();
+    $.getJSON('http://localhost:8000/jquery-server',{a:100,b:200},function(ret) {
+        myChart.hideLoading();
+        var test_data = [];
+        test_data = ret;
+
+        for (var i of test_data){
+        console.log(i);
+    }
+    
+    var option = {
+    xAxis: {},
+    yAxis: {},
+    series: [
+        {
+        symbolSize: 20,
+        data: test_data,
+        type: 'scatter'
+        }
+    ]
+    };
+    myChart.setOption(option);
+    //监听窗口变化
+    window.onresize = function () {
+        myChart.resize();
+    };
+    });
+</script>
+</html>
